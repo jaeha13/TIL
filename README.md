@@ -5,8 +5,6 @@ Today I Learn
 
 * git 관련 참고 자료
 
-  [notion](https://www.notion.so/1595de919fbd4fc1b78cb4ce718e19c4)
-
   [git 간편안내서](http://rogerdudler.github.io/git-guide/index.ko.html)
 
   [GitHub 홈페이지 안내서](https://guides.github.com/activities/hello-world/)
