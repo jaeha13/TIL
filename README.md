@@ -11,7 +11,7 @@ Today I Learn
 
   [책](https://git-scm.com/book/ko/v2)
 
-  [정리](https://backlog.com/git-tutorial/kr/stepup/)
+  [정리](https://backlog.com/git-tutorial/kr/)
 
 * 읽어보면 좋은 자료
 
