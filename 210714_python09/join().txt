@@ -1,0 +1,112 @@
+# 과제
+[ 실습 2 ]
+구현해야 하는 함수 사양
+   함수명 : myprint
+   매개변수 : 가변 아규먼트1개, 가변 키워드 아규먼트 1개
+   리턴값 : 없음
+   기능 : 전달되는 아규먼트의 개수에는 제한이 없다.
+         호출시 전달되는 아규먼트의 데이터 타입에도 제한이 없다. 
+         아규먼트가 전달되지 않으면 “Hello Python”을 출력한다.
+         출력 형식은 다음에 제시된 실행 결과 예시를 보고 처리하는데 한 번의 print() 함수로 처리한다.	
+ 
+ 	 myprint(10, 20, 30, deco="@", sep="-")  호출시
+     		@10-20-30@ 출력
+	myprint("python", "javascript", "R", deco="$")  호출시
+     		$python,javascript,R$ 출력
+	myprint("가", "나", "다")  호출시
+     		**가,나,다** 출력
+	myprint(100)  호출시
+     		**100** 출력
+	myprint(True, 111, False, "abc", deco="&", sep="")  호출시
+     		&True111Falseabc& 출력
+
+
+0. 무작정 print() option 들(서식)을 이용해서 해결하려 함 => 실패!!! 도저히 양 옆에 deco를 아무 구분자 없이 출력할 수 가 없음!!
+
+1. deco 를 제외한 요소와 sep을 하나로 합쳐야겠다고 생각
+1-1. 요소들 사이에 sep을 넣고 싶음!!! 어떻게 합칠 것인가 > option (for 문을 통해 하나하나 넣는다 / '구분자'.join() 함수를 사용한다)
+
+1-1-1. for 문을 통해 하나하나 넣어본다 = version 1 : 해결은 했는데... 예쁘지가 않음(마음에 안듦ㅠ)
+
+1-1-2. '구분자'.join() 함수를 사용한다 = version 2/3 : 사실 join() 함수에 대해 잘 몰라서 처음에 사용 안했던 것...
+1-1-2-1. '구분자'.join() 함수를 사용 = version2 하고  Error 발생!!
+	<Error>
+	# Traceback (most recent call last):
+	#  File "C:/jha/PYTHONexam/day9/funcLab12.py", line 35, in <module>
+	#    myprint(10, 20, 30, deco="@", sep="-")
+	#  File "C:/jha/PYTHONexam/day9/funcLab12.py", line 30, in myprint
+	#    str1 = kwargs_dict["sep"].join(lst)
+	# TypeError: sequence item 0: expected str instance, int found
+	=> 원인 : there are any non-string values in iterable, including bytes objects. = join() 함수를 사용하기 위해서 list의 요소는 string이어야 함!!
+	=> test case 의 첫번째 시작이 myprint(10, 20, 30, deco="@", sep="-") 여서.. 난 Error
+	=> 숫자가 없는 test case 에 대해서는 잘 돌아감 => 숫자를 str으로!! 바꿔야 함!
+1-1-2-2. '구분자'.join() 함수를 사용하고 + list 내 숫자형을 str형으로!! using map() 함수 = version3 : 잘 돌아감!! 문제 해결!
+
+
+# version 1 : join 함수를 사용하지 않고!!
+def myprint(*args, **kwargs):
+    if len(args) == 0 and len(kwargs) == 0:
+        print("Hello Python")
+    else:
+        kwargs_dict = {"deco": "**", "sep": ","}    # default 값 생성
+        kwargs_dict.update({k: v for k, v in kwargs.items()})   # kwargs 로부터 데이터 저장
+        # print 를 한번만 사용해서 출력하기 위해 args 요소들 사이에 sep 넣은 lst 만들기
+        lst = []
+        for i in range(len(args)):
+            if args[i] != args[-1]:     # 제일 마지막에는 sep 이 들어가면 안됨!
+                lst.append(args[i])     # args 요소 하나 저장하고
+                lst.append(kwargs_dict["sep"])  # sep 하나 저장
+            else:                       # 제일 마지막 요소 뒤에는 아무것도 없이!
+                lst.append(args[i])
+        print(kwargs_dict["deco"], *lst, kwargs_dict["deco"], sep="")   # deco 를 양 옆에 붙여서 *lst 출력
+
+
+"""
+# version 2
+# '구분자'.join(리스트) 함수 사용? Error!!   숫자가 포함된 case 의 경우 Error
+def myprint(*args, **kwargs):
+    if len(args) == 0 and len(kwargs) == 0:
+        print("Hello Python")
+    else:
+        kwargs_dict = {"deco": "**", "sep": ","}    # default 값 생성
+        kwargs_dict.update({k: v for k, v in kwargs.items()})   # kwargs 로부터 데이터 저장
+        # print 를 한번만 사용해서 출력하기 위해 args 요소들 사이에 sep 넣은 lst 만들기 using "구분자".join(리스트)
+        lst = list(args)
+        str1 = kwargs_dict["sep"].join(lst)
+
+# Error
+# Traceback (most recent call last):
+#  File "C:/jha/PYTHONexam/day9/funcLab12.py", line 35, in <module>
+#    myprint(10, 20, 30, deco="@", sep="-")
+#  File "C:/jha/PYTHONexam/day9/funcLab12.py", line 30, in myprint
+#    str1 = kwargs_dict["sep"].join(lst)
+# TypeError: sequence item 0: expected str instance, int found
+
+# => 원인: there are any non-string values in iterable, including bytes objects.
+
+        print(kwargs_dict["deco"], str1, kwargs_dict["deco"], sep="")   # deco 를 양 옆에 붙여서 *lst 출력
+"""
+
+
+# version 3
+# '구분자'.join(리스트) 함수를 이용 + map() 함수 이용해 Error 해결!!
+def myprint(*args, **kwargs):
+    if len(args) == 0 and len(kwargs) == 0:
+        print("Hello Python")
+    else:
+        kwargs_dict = {"deco": "**", "sep": ","}    # default 값 생성
+        kwargs_dict.update({k: v for k, v in kwargs.items()})   # kwargs 로부터 데이터 저장
+        # print 를 한번만 사용해서 출력하기 위해 args 요소들 사이에 sep 넣은 lst 만들기 using "구분자".join(리스트)
+        lst = list(args)
+        # (int) 숫자가 포함된 경우 Error 발생 => map() 함수를 이용하여 list 내 숫자를 string 으로 변환!!
+        str1 = kwargs_dict["sep"].join(map(str, lst))
+        print(kwargs_dict["deco"], str1, kwargs_dict["deco"], sep="")   # deco 를 양 옆에 붙여서 *lst 출력
+
+
+# 실행 코드
+myprint()
+myprint(10, 20, 30, deco="@", sep="-")
+myprint("python", "javascript", "R", deco="$")
+myprint("가", "나", "다")
+myprint(100)
+myprint(True, 111, False, "abc", deco="&", sep="")
