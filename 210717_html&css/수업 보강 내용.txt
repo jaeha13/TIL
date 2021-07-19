@@ -1,0 +1,25 @@
+[웹 관련 직종]
+
+웹 디자이너 ---> 웹 퍼블리셔
+포토샵		포토샵, CSS
+
+프론트엔드개발자 -> JavaScript, jQuery, react, vue, ...
+백엔드개발자 -> 서버: django, flask - python 이용, setvlet, asp, jsp, php, nodejs(JavaScript), spring
+풀스택개발자 -> 프론트엔드 + 백엔드
+
+Web Form
+서비스 이용자들로부터 정보를 입력 받기 위한 태그!! -> <input> 이용!!
+
+URL(Uniform Resource Locator)
+- 어떤 자원의 위치를 알리는 단일화된 형식의 문자열
+- 어떤 웹 사이트(페이지)의 주소 문자열
+
+    프로토콜명://서버IP주소(도메인명):포트번호/path/file
+				    --------
+				        URI
+    http://localhost:63342/WEBCLIENTexam/htmlexam/exam8.html
+	현재 시스템을 실행하고 있는 나 자신!!의 도메인명
+
+    http 프로토콜에서는 서버가 80 번 포트번호로 기동된 경우 URL 문자열에서 포트번호를 생략할 수 있게 정해놨다.
+		             -----------
+		              http 프로토콜의 기본 포트번호
