@@ -1,0 +1,22 @@
+[JavaScript의 API]
+
+document - write(), writeln()
+window - alert(), confirm(), prompt(), setInterval(), clearInterval()
+location - href, reload()
+new Array() -> 객체를 변수에 담아서
+new Date()-> 객체를 변수에 담아서
+console - log()
+Math - random(), floor()
+----------------------------------------------------
+setInterval(f(){} , ms): 두번째 인수ms 마다 첫번째 인수 처리를 해라!
+clearInterval(setInterval() 변수값): setInterval 취소
+location.href: 다른 페이지로 이동
+location.reload(): 다시 시작페이지로 이동
+----------------------------------------------------
+
+[CSS 선택자 이용하여 객체 가져오기]
+document.getElementsByTagName("태그명") -> 배열
+document.getElementById("id속성의 값") -> 태그객체
+document.getElementsByClassName("class 속성값") -> 배열
+document.querySelector("CSS선택자") -> 태그객체
+document.querySelectorAll("CSS선택자") -> 배열

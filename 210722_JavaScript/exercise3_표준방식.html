@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        button:nth-of-type(1) {
+	color : red;
+	font-size : 1.5em;
+        }
+        button:nth-of-type(2) {
+	color : blue;
+	font-size : 1.5em;
+        }
+        button:nth-of-type(3) {
+	color : green;
+	font-size : 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <button id="red">빨강색</button>
+    <button id="blue">파랑색</button>
+    <button id="green">녹&nbsp;&nbsp;색</button>
+    <hr>
+    <h2></h2>
+
+    <script>
+		var d = new Date();
+        d_array = d.toLocaleDateString().split(".");
+        var red = document.getElementById("red");
+        red.addEventListener('click', function f() {print_h2color("red");});
+        var blue = document.getElementById("blue");
+        blue.addEventListener('click', function f() {print_h2color("blue");});
+        var green = document.getElementById("green");
+        green.addEventListener('click', function f() {print_h2color("green");});
+        function print_h2color(c) {
+		    var array_1 = d_array;
+		    document.write("<h2 style='color:" + c + "' >" + array_1[0] + "년" + array_1[1] + "월" + array_1[2] + "일입니다." + "</h2>");
+		};
+    </script>
+</body>
+</html>
+

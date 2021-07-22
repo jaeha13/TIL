@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise1</title>
+</head>
+<body>
+<script src="util.js"></script>
+<script>
+var array_1 = [10, 5, 7, 21, 4, 8, 18];
+function f1(ary) {
+    var sum = 0;
+    for (var i in ary)
+        sum += ary[i];
+    writeColor("모든 원소의 합 :" + sum , "h2", "red");
+}
+function f2(ary) {
+    writeColor("최대값 :" + ary[ary.length - 1], "h3", "green");
+    writeColor("최소값 :" + ary[0], "h4", "blue");
+}
+f1(array_1);
+array_1.sort(function(a, b){ return a - b;});
+f2(array_1);
+</script>
+</body>
+</html>

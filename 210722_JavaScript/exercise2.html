@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise2</title>
+</head>
+<body>
+<script>
+    var rValue = Math.round(Math.random() * 3) + 1;
+    var url;
+    function f1(rv) {
+        if (rValue == 1)
+            url = "https://www.daum.net";
+        else if (rValue == 2)
+            url = "https://www.naver.com";
+        else
+            url = "https://www.google.com";
+    }
+    f1(rValue);
+    if (window.confirm("이동할까요?"))
+        location.href = url;
+    else
+        location.href = "../htmlexam/first.html";
+</script>
+</body>
+</html>
