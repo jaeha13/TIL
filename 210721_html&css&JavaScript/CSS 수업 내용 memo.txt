@@ -1,0 +1,13 @@
+12px, 12pt, 1.2em
+
+Framework
+--> 고급 API
+--> 반제품 형태의 프로그램
+
+bootstrap, django
+
+css에서
+margin-left, margin-rignt: auto;
+처럼 할 수 없다!
+
+float : right or left -> footer에는 반드시 clear: both;를 꼭 줘야 표시 가능!
