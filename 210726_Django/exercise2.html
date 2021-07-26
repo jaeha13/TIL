@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exercise2</title>
+</head>
+<body>
+<h1>인터페이스 개발 팀 프로젝트</h1>
+<hr>
+{% if type == None %}
+    <h2>{{msg}}</h2>
+{% elif type == 'memberlist' %}
+    <h2>우리팀의 팀원을 소개합니다.</h2>
+    <ul>
+        {% for mem in memberlist %}
+            <li>{{mem}}</li>
+        {% endfor %}
+    </ul>
+{% elif type == 'number' %}
+    <h2>우리팀 인원은 {{number}}명입니다.</h2>
+{% endif %}
+</body>
+</html>

@@ -181,7 +181,7 @@ var myFunction = function(인자, ..){
 
 #### 방법1
 
-* { k = v, k = v, ...}
+* { k : v, k : v, ...}
 
 #### 방법 2
 
