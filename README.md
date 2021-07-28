@@ -1,5 +1,5 @@
 # TIL
-Today I Learn
+Today I Learn!
 
 ## git특강 자료
 
@@ -18,4 +18,3 @@ Today I Learn
   [카카오 택시 데이터(2018)](https://brunch.co.kr/@kakao-it/38)
 
   [백엔드 개발자 되기](https://d2.naver.com/news/3435170)
-
